@@ -1,0 +1,1 @@
+{\"id\": 123,\n" +  \"source\": \"batch-system\",\n" + \"status\":\"BATCH_STARTED\",\n" +  \"timestamp\": \"2022-07-16T14:45:35+00:00\"\n" +}

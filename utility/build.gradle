@@ -1,0 +1,36 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':common')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.3.3'
+    testImplementation 'org.assertj:assertj-core:3.15.0'
+}
+
+group 'tech.pathtoprogramming'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'tech.pathtoprogramming.utility.MainApplication'
+    }
+    baseName = 'event-publishing-utility'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

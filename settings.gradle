@@ -1,0 +1,4 @@
+rootProject.name = 'event-publishing-utility'
+include 'common'
+include 'utility'
+
